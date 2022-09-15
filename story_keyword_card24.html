@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>오쓰카 에이지의 스토리 키워드 카드 24</title>
+ <!--script src="story_keyword_card24.json"></script-->
+ <script>
+  let storyCards = ["의사","청초","이성","질서","지혜","서약","선량","절도","성실","생명","관용","해방","조화","창조","신뢰","공식","변화","결합","엄격","용기","행운","비호","치유","자애"];
+
+  function rand(min, max){
+   return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function pickStoryCard() {
+   let cards = [];
+
+   while(cards.length < 6){
+    card = storyCards[rand(0, storyCards.length - 1)];
+    if(cards.indexOf(card) !== -1){
+     continue;
+    }
+    if(rand(0,1) === 1){
+     card = '反' + card;
+    }
+    cards.push(card)
+   }
+   return cards;
+  }
+
+  function showCard() {
+   let cards = pickStoryCard();
+
+   let htmlCards = [
+    document.getElementById('card1'),
+    document.getElementById('card2'),
+    document.getElementById('card3'),
+    document.getElementById('card4'),
+    document.getElementById('card5'),
+    document.getElementById('card6'),
+   ];
+
+   for(let i = 0; i < cards.length; i++){
+    htmlCards[i].innerText = cards[i];
+   }
+  }
+ </script>
+</head>
+<body>
+ <h1>출처: 오쓰카 에이지(<ruby>大塚<rt>おおつか</rt> 英志<rt>えいじ</rt></ruby>)의 <cite><a href="http://preview.kyobobook.co.kr/preview.jsp?siteGb=INK&ejkGb=KOR&barcode=9791185400037&loginYn=N&orderClick=JAW" target="_blank">이야기 체조<sub>이야기를 만들기 위한 6가지 레슨<sub></a></cite></h1>
+  <h2>1장 카드를 이용한 ‘해체와 재구성’ 연습</h2>
+ <hr>
+ <button onclick="showCard()">스토리 카드 선택</button>
+ <div>
+  <p>주인공의 현재: <b><span id="card1">버튼을 눌러주세요.</span></b></p>
+  <p>주인공의 가까운 미래: <b><span id="card2">버튼을 눌러주세요.</span></b></p>
+  <p>주인공의 과거: <b><span id="card3">버튼을 눌러주세요.</span></b></p>
+  <p>조력자: <b><span id="card4">버튼을 눌러주세요.</span></b></p>
+  <p>적: <b><span id="card5">버튼을 눌러주세요.</span></b></p>
+  <p>결말: <b><span id="card6">버튼을 눌러주세요.</span></b></p>
+ </div>
+</body>
+</html>
