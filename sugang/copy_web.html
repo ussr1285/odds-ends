@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>수강신청용 문서</title>
+</head>
+
+<body>
+  <script>
+    var className = [
+      ["●자료구조및실습", "★자료구조및실습", "●자료구조및실습"],
+      ["★▼▶객체지향프로그래밍및실습", "◆◎△객체지향프로그래밍및실습", "▲객체지향프로그래밍및실습", "◀객체지향프로그래밍및실습"],
+      ["●컴퓨터네트워크", "◆컴퓨터네트워크", "▲컴퓨터네트워크"],
+      ["△컴퓨터구조", "◎컴퓨터구조", "▼컴퓨터구조"],
+      ["●데이터관리론"],
+      ["◀디지털회로", "▶디지털회로", "●디지털회로"],
+      ["●일본입문"],
+      ["●마케팅관리", ".마케팅관리", ".마케팅관리", ".마케팅관리"]
+    ]
+    var classCode = [
+      ["F056", "F057", "F055"],
+      ["F091", "F089", "F090", "F127"],
+      ["F016", "F014", "F015"],
+      ["F019", "F020", "F018"],
+      ["I009"],
+      ["F083", "F082", "F084"],
+      ["Z015"],
+      ["I103", "I099", "I100", "I101"]
+    ]
+  </script>
+  <div>
+    <script>
+      for (let i = 0; i < className.length; i++) {
+        for (let j = 0; j < className[i].length; j++) {
+          document.write('<div style="margin-bottom: 2px;"><button id="button_' + classCode[i][j] + '">' + className[i][j] + ' </button><span id="' + classCode[i][j] + '">' + classCode[i][j] + '</span></div>'); // <button id="button1">과목명 </button><span id="code1">과목코드</span>
+      }
+      document.write('<div style="margin-bottom: 15px;"></div>')
+    }
+    </script>
+  </div>
+</body>
+
+<script>
+  const buttonFun = (code_id, button_id) => {
+    const classArr = document.getElementById(code_id)
+    document.getElementById(button_id).onclick = () => {
+      window.navigator.clipboard.writeText(classArr.textContent)
+    }
+  }
+
+  for (let i = 0; i < className.length; i++) {
+    for (let j = 0; j < className[i].length; j++) {
+      buttonFun(classCode[i][j], 'button_' + classCode[i][j])
+    }
+  }
+</script>
+
+</html>
